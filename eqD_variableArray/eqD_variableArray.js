@@ -80,7 +80,7 @@ equalDelight.variableArray.version = "0.0.1";
  *              Replaces the value of variable 2 from 4 to 8.
  *
  *   removeArray [variable id] [value]
- *   - This will remove a valueom an array.
+ *   - This will remove a value in an array.
  *     example: removeArray 10 5
  *              Removes the value 5 inside of variable 10.
  *
