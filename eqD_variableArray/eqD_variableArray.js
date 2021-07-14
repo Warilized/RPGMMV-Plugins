@@ -99,6 +99,11 @@ equalDelight.variableArray.version = "0.0.1";
  *     example: arrayAdd 1 2
  *              Adds the value 2 inside of variable array 1.
  *
+ *   arrayInsert [variable id] [value] [value index]
+ *   - This will add an array inside a variable.
+ *     example: arrayInsert 2 4 8
+ *              Insert the item value of 8 at index 8 on variable array 2.
+ *
  *   arrayReplace [variable id] [value] [value to replace]
  *   - This will add an array inside a variable.
  *     example: arrayReplace 2 4 8
@@ -173,11 +178,27 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		varArray.autoSort();
 		varValue = "";
 	};
+
+	varArray.insertItem = function (id, a, b) {
+		varValue = $gameVariables.value(id);
+		itemIndex = varValue.indexOf(a);
+	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, b);
+		if (equalDelight.Param.forbidCopy) {
+			if ($gameVariables.value(id).includes(value)) {
+				console.log("An array with 2 or more identical value is forbidden!");
+			} else {
+				action;
+			}
+		} else {
+			action;
+		};
+	  varArray.autoSort();
+	}
 	
 	varArray.replaceItem = function (id, a, b) {
 		varValue = $gameVariables.value(id);
-		elemIndex = varValue.indexOf(a);
-	  action = $gameVariables.setValue(id, varValue.splice(elemIndex, b);
+		itemIndex = varValue.indexOf(a);
+	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, b);
 		if (equalDelight.Param.forbidCopy) {
 			if ($gameVariables.value(id).includes(value)) {
 				console.log("An array with 2 or more identical value is forbidden!");
