@@ -38,8 +38,7 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  * @help
  * Variable Array by equalDelight
  * Version 0.0.1
- * Release Notes: 
- * https://github.com/Warilized/RPGMMV-Plugins/blob/main/eqD_variableArray/RELEASENOTES.txt
+ * Release Notes: See the end of Help File
  *
  * ============================================================================
  * Introduction
@@ -124,6 +123,15 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  *     example: arraySort 4
  *              Sorts the elements of variable 4.
  *
+ * ============================================================================
+ * End of Help File
+ * ============================================================================
+ *
+ * Thanks for using this plugin.
+ * Credits are apreciated.
+ *
+ * Release Notes:
+ * https://github.com/Warilized/RPGMMV-Plugins/blob/main/Utility%20Plugins/Variable%20Array/RELEASENOTES.txt 
  */
 //=============================================================================
 
