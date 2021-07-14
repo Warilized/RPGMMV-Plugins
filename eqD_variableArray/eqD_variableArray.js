@@ -47,13 +47,20 @@ equalDelight.variableArray.version = "0.0.1";
  * This plugin makes it easier to make an array inside a variable.
  *
  * ============================================================================
- * Intructions
+ * Instructions
  * ============================================================================
  *
- * Place your Patch Notes file (could be either a HTML or TXT file) inside the
- * base directory of your game project. By default, this filename is set to
- * 'patchnotes.txt' in the Plugin Parameters, so change that if you intend to
- * use a different filename or file type.
+ * Use script calls or plugin command to define a variable as an array first.
+ * - arrayCreate 1
+ *   //This is a plugin command where 1 is the ID of a variable.
+ *
+ * Then you cam modify it with arrayAdd or arratReplace
+ *
+ * ============================================================================
+ * Parameters
+ * ============================================================================
+ *
+ *
  *
  * ============================================================================
  * Script Calls
@@ -69,30 +76,30 @@ equalDelight.variableArray.version = "0.0.1";
  *
  * Plugin Commands:
  *
- *   addArray [variable id] [value]
+ *   arrayAdd [variable id] [value]
  *   - This will add an array inside a variable.
- *     example: addArray 1 2
- *              Adds the value 2 inside of variable 1.
+ *     example: arrayAdd 1 2
+ *              Adds the value 2 inside of variable array 1.
  *
- *   replaceArray [variable id] [value] [value to replace]
+ *   arrayReplace [variable id] [value] [value to replace]
  *   - This will add an array inside a variable.
- *     example: replaceArray 2 4 8
- *              Replaces the value of variable 2 from 4 to 8.
+ *     example: arrayReplace 2 4 8
+ *              Replaces the item value of variable array 2 from 4 to 8.
  *
- *   removeArray [variable id] [value]
+ *   arrayRemove [variable id] [value]
  *   - This will remove a value in an array.
- *     example: removeArray 10 5
- *              Removes the value 5 inside of variable 10.
+ *     example: arrayRemove 10 5
+ *              Removes the item value 5 inside of variable array 10.
  *
- *   deleteArray [variable id]
+ *   arrayWipe [variable id]
  *   - This will delete every value from an array.
- *     example: deleteArray 1
- *              Deletes everything from variable 1.
+ *     example: arrayWipe 7
+ *              Deletes everything from variable array 7.
  *
- *   sortArray [variable id]
- *   - This will delete every value from an array.
- *     example: sortArray 1
- *              Sorts the elements of variable 1.
+ *   arraySort [variable id]
+ *   - This will sort every value from an array from a-z or lesser-greater.
+ *     example: arraySort 4
+ *              Sorts the elements of variable 4.
  *
  */
 //=============================================================================
