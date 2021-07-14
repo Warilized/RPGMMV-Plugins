@@ -2,7 +2,7 @@
 // Variable Array
 // By equalDelight
 // eqD_variableArray.js
-// Version: 0.1
+// Version: 0.0.1
 // Released under MIT license
 //=============================================================================
 
