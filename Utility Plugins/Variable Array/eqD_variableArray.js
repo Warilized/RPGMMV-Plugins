@@ -18,14 +18,6 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  * @plugindesc v0.0.1 | Utility plugin to easily make array in a variable.
  * @author equalDelight
  *
- * @param forbidCopy
- * @text Forbid Copy
- * @desc Forbids an array having items with the same values.
- * @type boolean
- * @on YES
- * @off NO
- * @default true
- *
  * @param autoSort
  * @text Auto Sort
  * @desc Auto sort the values inside of an array.
@@ -62,7 +54,7 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  * Parameters
  * ============================================================================
  *
- * This plugin have 2 parameters and it's pretty self-explanatory.
+ * This plugin have 1 parameter and it's pretty self-explanatory.
  * 
  * - Auto Sort
  *   Auto sort the values inside of an array.
