@@ -129,11 +129,11 @@ eqD.PluginCommands = eqD.PluginCommands || {};
 // Parameter Variables
 //=============================================================================
 
-equalDelight.Parameters = PluginManager.parameters('eqD_variableArray');
-equalDelight.Param = equalDelight.Param || {};
+varArrayParams = PluginManager.parameters('eqD_variableArray');
+eqD.Param = eqD.Param || {};
 
-equalDelight.Param.forbidCopy = eval(String(equalDelight.Parameters['forbidCopy']));
-equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
+eqD.Param.forbidCopy = eval(String(varArrayParams['forbidCopy']));
+eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
 
 //=============================================================================
 // Script
@@ -158,7 +158,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
   };
   
   varArray.forbidCopy = function (src, value) {
-		if (equalDelight.Param.forbidCopy) {
+		if (eqD.Param.forbidCopy) {
 			if ($gameVariables.value(src).includes(value)) {
 				varArray.throwError(1);
 			} else {
@@ -174,7 +174,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
   };
   
   varArray.autoSort = function () {
-    if (equalDelight.Param.autoSort) {
+    if (eqD.Param.autoSort) {
 			varArray.sortValue(id);
 		} else {
 		  return;
@@ -205,7 +205,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		varValue = $gameVariables.value(id);
 		itemIndex = varValue.indexOf(a);
 	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, 0, b);
-		if (equalDelight.Param.forbidCopy) {
+		if (eqD.Param.forbidCopy) {
 			if ($gameVariables.value(id).includes(varValue)) {
 				console.log("An array with 2 or more identical value is forbidden!");
 			} else {
@@ -221,7 +221,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		varValue = $gameVariables.value(id);
 		itemIndex = varValue.indexOf(a);
 	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, 1, b);
-		if (equalDelight.Param.forbidCopy) {
+		if (eqD.Param.forbidCopy) {
 			if ($gameVariables.value(id).includes(value)) {
 				console.log("An array with 2 or more identical value is forbidden!");
 			} else {
