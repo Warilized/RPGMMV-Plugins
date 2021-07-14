@@ -7,11 +7,11 @@
 //=============================================================================
 
 var Imported = Imported || {};
-Imported.eqD_variableArray = true;
+Imported.eqD_variableArray = "0.0.1";
 
-var equalDelight = equalDelight || {};
+var eqD = eqD || {};
 equalDelight.variableArray = equalDelight.variableArray || {};
-equalDelight.variableArray.version = "0.0.1";
+eqD.PluginCommands = eqD.PluginCommands || {};
 
 //=============================================================================
  /*:
