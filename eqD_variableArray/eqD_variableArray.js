@@ -67,13 +67,24 @@ equalDelight.variableArray.version = "0.0.1";
  * 
  * Parameters:
  * - Forbid Copy
- *   Forbids an array having items with the same values.
+ *   Forbids an array having items with the same values. 
+ *   Usefull for a unique valued array.
+ *
+ * - Auto Sort
+ *   Auto sort the values inside of an array.
+ *   If the item value is strictly tied to it's index*, disable this.
+ *   *Example: Making the index of an array some sort of ID that can be 
+ *   referenced.
  *
  * ============================================================================
  * Script Calls
  * ============================================================================
  *
- * You can use the following scriptcall to manipulate an array.
+ * You can use the following script call to manipulate an array.
+ *
+ * Script calls:
+ * - insert scriptcalls
+ *   insert desc.
  *
  * ============================================================================
  * Plugin Commands
