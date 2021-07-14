@@ -80,10 +80,13 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  *
  * Plugin Commands:
  *
- *   arrayAdd [variable id] [value]
+ *   arrayAdd [variable id] [value] [type of value]
  *   - This will add an array inside a variable.
- *     example: arrayAdd 1 2
- *              Adds the value 2 inside of variable array 1.
+ *     Type of value: default, unique. can be xxxx.
+ *     example: arrayAdd 1 2 unique
+ *              Adds the value of 2 inside of variable array 1.
+ *              unique means that the value inside that array
+*               can't be the same.
  *
  *   arrayInsert [variable id] [value] [value index]
  *   - This will add an array inside a variable.
