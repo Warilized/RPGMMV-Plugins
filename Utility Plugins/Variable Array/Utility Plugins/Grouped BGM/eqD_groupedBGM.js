@@ -88,6 +88,11 @@ eqD.PluginCommands = eqD.PluginCommands || {};
       BGMGroupName;
 
 //GAME MAP
+
+  groupedBgm.fetchdata = function () {
+    return false;
+  };
+  
   const eqD_groupedBGM__autoplay = Game_Map.prototype.autoplay;
   Game_Map.prototype.autoplay = function() {
     var BGMGroup = parseInt($dataMap.meta.bgm_reference);
