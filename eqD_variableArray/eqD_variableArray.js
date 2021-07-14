@@ -38,7 +38,8 @@ equalDelight.variableArray.version = "0.0.1";
  * @help
  * Variable Array by equalDelight
  * Version 0.1
- * Patch Notes: [link]
+ * Patch Notes: 
+ * https://github.com/Warilized/RPGMMV-Plugins/blob/main/eqD_variableArray/PATCHNOTES.txt
  *
  * ============================================================================
  * Introduction
