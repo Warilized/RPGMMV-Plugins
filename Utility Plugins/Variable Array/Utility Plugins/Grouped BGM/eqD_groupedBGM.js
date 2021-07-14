@@ -83,30 +83,28 @@ eqD.PluginCommands = eqD.PluginCommands || {};
 	"use strict";
 
 //LOCAL VARIABLES
-  let loadReference,
-      currentGroup,
+  let currentGroup,
       BGMGroupName;
 
 //GAME MAP
 
-  groupedBgm.fetchdata = function () {
-    return false;
+  groupedBgm.fetchSrc = function () {
+    var BGMGroup = parseInt($dataMap.meta.bgm_reference),
+        mapRef = 'Map%1.json'.format(BGMGroup.padZero(3));
+    return mapRef;
   };
-  
-  const eqD_groupedBGM__autoplay = Game_Map.prototype.autoplay;
-  Game_Map.prototype.autoplay = function() {
-    var BGMGroup = parseInt($dataMap.meta.bgm_reference);
-    var mapRef = 'Map%1.json'.format(BGMGroup.padZero(3));
-    loadReference = function(src) {
-      var xhr = new XMLHttpRequest();
-      var url = 'data/' + src;
-      xhr.open('GET', url);
-      xhr.overrideMimeType('application/json');
-      xhr.onload = function() {
-        if (xhr.status < 400) {
-          dataMapRef = JSON.parse(xhr.responseText);
-          DataManager.extractMetadata(dataMapRef);
-		  var BGMGroupName = dataMapRef.bgm.name;
+
+  groupedBgm.loadReference = function () {
+    var src = groupedBgm.fetchSrc();
+    var xhr = new XMLHttpRequest();
+    var url = 'data/' + src;
+    xhr.open('GET', url);
+    xhr.overrideMimeType('application/json');
+    xhr.onload = function() {
+      if (xhr.status < 400) {
+        dataMapRef = JSON.parse(xhr.responseText);
+        DataManager.extractMetadata(dataMapRef);
+	      var BGMGroupName = dataMapRef.bgm.name;
           if (BGMGroup != currentGroup) {
             currentGroup = BGMGroup;
             console.log("This is group : "+currentGroup+", BGM is: "+BGMGroupName );
@@ -120,7 +118,12 @@ eqD.PluginCommands = eqD.PluginCommands || {};
       dataMapRef = null;
       xhr.send();
     };
-   if (BGMGroup > 0 && !$dataMap.autoplayBgm)  { // If bgm_reference notetag is > 0 and no assigned bgm on map present
+  };
+  
+  const eqD_groupedBGM__autoplay = Game_Map.prototype.autoplay;
+  Game_Map.prototype.autoplay = function() {
+    groupedBGM.loadReference();
+    if (BGMGroup > 0 && !$dataMap.autoplayBgm)  { // If bgm_reference notetag is > 0 and no assigned bgm on map present
       if ($gamePlayer.isInVehicle()) {
           $gameSystem.saveWalkingBgm2();
       } else {
