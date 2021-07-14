@@ -15,7 +15,7 @@ equalDelight.variableArray.version = 0.1;
 
 //=============================================================================
  /*:
- * @plugindesc v0.1 | Utility olugin to easily make array in a variable.
+ * @plugindesc v0.1 | Utility plugin to easily make array in a variable.
  * @author equalDelight
  *
  * @param forbidCopy
