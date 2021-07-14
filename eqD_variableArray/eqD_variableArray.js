@@ -11,7 +11,7 @@ Imported.eqD_variableArray = true;
 
 var equalDelight = equalDelight || {};
 equalDelight.variableArray = equalDelight.variableArray || {};
-equalDelight.variableArray.version = 0.0.1;
+equalDelight.variableArray.version = "0.0.1";
 
 //=============================================================================
  /*:
@@ -133,6 +133,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 				console.log("An array with 2 or more identical value is forbidden!");
 			} else {
 				action;
+			}
 		} else {
 			action;
 		};
