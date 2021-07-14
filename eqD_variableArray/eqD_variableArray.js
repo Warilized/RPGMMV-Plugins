@@ -158,7 +158,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
     $gameVariables.setValue(id, []);
   };
 
-	varArray.addElement = function (id, value) {
+	varArray.addItem = function (id, value) {
 	  varValue = $gameVariables.value(id);
 	  action = $gameVariables.setValue(id, varValue.push(value));
 		if (equalDelight.Param.forbidCopy) {
@@ -174,7 +174,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		varValue = "";
 	};
 	
-	varArray.replaceElement = function (id, a, b) {
+	varArray.replaceItem = function (id, a, b) {
 		varValue = $gameVariables.value(id);
 		elemIndex = varValue.indexOf(a);
 	  action = $gameVariables.setValue(id, varValue.splice(elemIndex, b);
