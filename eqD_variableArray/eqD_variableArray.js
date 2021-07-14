@@ -11,11 +11,11 @@ Imported.eqD_variableArray = true;
 
 var equalDelight = equalDelight || {};
 equalDelight.variableArray = equalDelight.variableArray || {};
-equalDelight.variableArray.version = 0.1;
+equalDelight.variableArray.version = 0.0.1;
 
 //=============================================================================
  /*:
- * @plugindesc v0.1 | Utility plugin to easily make array in a variable.
+ * @plugindesc v0.0.1 | Utility plugin to easily make array in a variable.
  * @author equalDelight
  *
  * @param forbidCopy
@@ -112,21 +112,31 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 //=============================================================================
 (function ($) {
 	"use strict";
+  
+  let varArray;
+  
+  varArray.createArray = function (id) {
+    $gameVariables.setValue(id, []);
+  }
 
-	eqD.addArray = function (src, value) {
+	varArray.addArray = function (id, value) {
+	  tempValue = $gameVariables.value(id);
+	  action = $gameVariables.setValue(id, tempValue.push(value));
 		if (equalDelight.Param.forbidCopy) {
-			if ($gameVariables.value(src).includes(value)) {
+			if ($gameVariables.value(id).includes(value)) {
 				console.log("An array with 2 or more identical value is forbidden!");
 			} else {
-				$gameVariables.value(src).push(value);
+				action;
 		} else {
-			$gameVariables.value(src).push(value);
+			action;
 		};
 		if (equalDelight.Param.autoSort) {
 			$gameVariables.value(src).sort();
+		}
+		tempValue = "";
 	};
 	
-	eqD.replaceArray = function (src, a, b) {
+	varArray.replaceArray = function (src, a, b) {
 		val = $gameVariables.value(src);
 	
 	}
