@@ -162,7 +162,7 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
 			if ($gameVariables.value(src).includes(value)) {
 				varArray.throwError(1);
 			} else {
-				return true
+				return true;
 			}
 		} else {
 			return true;
