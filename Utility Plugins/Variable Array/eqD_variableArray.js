@@ -54,7 +54,7 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  * - arrayCreate 1
  *   //This is a plugin command where 1 is the ID of a variable.
  *
- * Then you cam modify it with arrayAdd, arratReplace, etc.
+ * Then you can modify it with arrayAdd, arrayReplace, etc.
  *
  * An array must be defined first to make it work.
  *
