@@ -5,7 +5,6 @@
 // Version: 0.1
 // Released under MIT license
 //=============================================================================
-// This is the imported variable, like you use
 
 var Imported = Imported || {};
 Imported.eqD_variableArray = true;
@@ -114,23 +113,21 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 (function ($) {
 	"use strict";
 
-	const gv = $gameVariables,
-
 	eqD.addArray = function (src, value) {
 		if (equalDelight.Param.forbidCopy) {
-			if (gv.value(src).includes(value)) {
+			if ($gameVariables.value(src).includes(value)) {
 				console.log("An array with 2 or more identical value is forbidden!");
 			} else {
-				gv.value(src).push(value);
+				$gameVariables.value(src).push(value);
 		} else {
-			gv.value(src).push(value);
+			$gameVariables.value(src).push(value);
 		};
 		if (equalDelight.Param.autoSort) {
-			gv.value(src).sort();
+			$gameVariables.value(src).sort();
 	};
 	
 	eqD.replaceArray = function (src, a, b) {
-		val = gv.value(src);
+		val = $gameVariables.value(src);
 	
 	}
 // Private variable
