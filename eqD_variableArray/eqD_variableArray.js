@@ -182,7 +182,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 	varArray.insertItem = function (id, a, b) {
 		varValue = $gameVariables.value(id);
 		itemIndex = varValue.indexOf(a);
-	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, b);
+	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, 0, b);
 		if (equalDelight.Param.forbidCopy) {
 			if ($gameVariables.value(id).includes(value)) {
 				console.log("An array with 2 or more identical value is forbidden!");
@@ -198,7 +198,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 	varArray.replaceItem = function (id, a, b) {
 		varValue = $gameVariables.value(id);
 		itemIndex = varValue.indexOf(a);
-	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, b);
+	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, 1, b);
 		if (equalDelight.Param.forbidCopy) {
 			if ($gameVariables.value(id).includes(value)) {
 				console.log("An array with 2 or more identical value is forbidden!");
