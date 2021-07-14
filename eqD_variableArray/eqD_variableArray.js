@@ -115,9 +115,15 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
   
   let varArray;
   
+  varArray.autoSort = function () {
+    if (equalDelight.Param.autoSort) {
+			$gameVariables.value(id).sort();
+		}
+  };
+  
   varArray.createArray = function (id) {
     $gameVariables.setValue(id, []);
-  }
+  };
 
 	varArray.addArray = function (id, value) {
 	  varValue = $gameVariables.value(id);
@@ -130,9 +136,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		} else {
 			action;
 		};
-		if (equalDelight.Param.autoSort) {
-			$gameVariables.value(src).sort();
-		}
+		varArray.autoSort();
 		varValue = "";
 	};
 	
@@ -147,7 +151,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		} else {
 			action;
 		};
-	
+	  varArray.autoSort();
 	}
 // Private variable
 
