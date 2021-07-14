@@ -157,7 +157,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
         console.log("Unknown error");
         break;
     }
-  }
+  };
   
   varArray.forbidCopy = function (src, value) {
 		if (equalDelight.Param.forbidCopy) {
@@ -183,6 +183,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		}
   };
   
+//=============================================================================
   
   varArray.createNew = function (id) {
     $gameVariables.setValue(id, []);
