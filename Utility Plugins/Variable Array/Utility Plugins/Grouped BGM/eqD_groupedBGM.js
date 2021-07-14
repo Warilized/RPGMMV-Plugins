@@ -83,11 +83,11 @@ eqD.PluginCommands = eqD.PluginCommands || {};
 	"use strict";
 
 //LOCAL VARIABLES
-  let currentGroup,
+  let groupedBgm,
+      currentGroup,
       BGMGroupName;
 
-//GAME MAP
-
+//FETCH FUNCTION
   groupedBgm.fetchSrc = function () {
     var BGMGroup = parseInt($dataMap.meta.bgm_reference),
         mapRef = 'Map%1.json'.format(BGMGroup.padZero(3));
@@ -119,6 +119,7 @@ eqD.PluginCommands = eqD.PluginCommands || {};
       xhr.send();
   };
   
+//GAME MAP  
   const eqD_groupedBGM__autoplay = Game_Map.prototype.autoplay;
   Game_Map.prototype.autoplay = function() {
     groupedBGM.loadReference();
