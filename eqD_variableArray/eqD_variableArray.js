@@ -120,7 +120,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
   }
 
 	varArray.addArray = function (id, value) {
-	  tempValue = $gameVariables.value(id);
+	  varValue = $gameVariables.value(id);
 	  action = $gameVariables.setValue(id, tempValue.push(value));
 		if (equalDelight.Param.forbidCopy) {
 			if ($gameVariables.value(id).includes(value)) {
@@ -133,11 +133,20 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		if (equalDelight.Param.autoSort) {
 			$gameVariables.value(src).sort();
 		}
-		tempValue = "";
+		varValue = "";
 	};
 	
-	varArray.replaceArray = function (src, a, b) {
-		val = $gameVariables.value(src);
+	varArray.replaceArray = function (id, a, b) {
+		varValue = $gameVariables.value(id);
+	  action = $gameVariables.setValue(id, tempValue()[];
+		if (equalDelight.Param.forbidCopy) {
+			if ($gameVariables.value(id).includes(value)) {
+				console.log("An array with 2 or more identical value is forbidden!");
+			} else {
+				action;
+		} else {
+			action;
+		};
 	
 	}
 // Private variable
