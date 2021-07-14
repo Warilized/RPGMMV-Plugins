@@ -212,20 +212,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		};
 	  varArray.autoSort();
 	}
-// Private variable
-
-// Public variables  
-
-// Private classes  
-
-// Private functions
-
-// Public classes  
-
-// Public functions  
-
-// Export area
     
-})(equalDelight); // Do you see the MyName here, that is the value of $ above.
+})(eqD_variableArray); // Do you see the MyName here, that is the value of $ above.
 
 // Plugin ends here
