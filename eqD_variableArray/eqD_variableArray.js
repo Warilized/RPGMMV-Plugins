@@ -121,11 +121,11 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		}
   };
   
-  varArray.createArray = function (id) {
+  varArray.create = function (id) {
     $gameVariables.setValue(id, []);
   };
 
-	varArray.addArray = function (id, value) {
+	varArray.add = function (id, value) {
 	  varValue = $gameVariables.value(id);
 	  action = $gameVariables.setValue(id, tempValue.push(value));
 		if (equalDelight.Param.forbidCopy) {
@@ -140,7 +140,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		varValue = "";
 	};
 	
-	varArray.replaceArray = function (id, a, b) {
+	varArray.replace = function (id, a, b) {
 		varValue = $gameVariables.value(id);
 	  action = $gameVariables.setValue(id, tempValue()[];
 		if (equalDelight.Param.forbidCopy) {
