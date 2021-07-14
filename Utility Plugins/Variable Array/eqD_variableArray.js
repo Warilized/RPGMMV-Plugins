@@ -10,7 +10,7 @@ var Imported = Imported || {};
 Imported.eqD_variableArray = "0.0.1";
 
 var eqD = eqD || {};
-equalDelight.variableArray = equalDelight.variableArray || {};
+eqD.variableArray = eqD.variableArray || {};
 eqD.PluginCommands = eqD.PluginCommands || {};
 
 //=============================================================================
@@ -192,14 +192,14 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
     $gameVariables.setValue(id, []);
   };
 
-	varArray.addItem = function (id, value) {
+	varArray.addItem = function (id, value, arrayType) {
 	  varValue = $gameVariables.value(id);
 	  action = $gameVariables.setValue(id, varValue.push(value));
-	  src = id;
-	  value = varValue;
-    if (varArray.forbidCopy(src)) {
-      action;
-    } else {
+	  if (arrayType == undefined) {
+	    src = id;
+	    item = value;
+	    varArray.forbidCopy(src, item);
+	  } else {
       varArray.throwError(2);
     }
 		varArray.autoSort();
