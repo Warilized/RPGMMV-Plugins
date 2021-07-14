@@ -20,7 +20,7 @@ equalDelight.variableArray.version = "0.0.1";
  *
  * @param forbidCopy
  * @text Forbid Copy
- * @desc Forbids the same value inside of an array.
+ * @desc Forbids an array having items with the same values.
  * @type boolean
  * @on YES
  * @off NO
@@ -28,11 +28,11 @@ equalDelight.variableArray.version = "0.0.1";
  *
  * @param autoSort
  * @text Auto Sort
- * @desc Auto sort the values inside of an array
+ * @desc Auto sort the values inside of an array.
  * @type boolean
  * @on YES
  * @off NO
- * @default true
+ * @default false
  *
  *
  * @help
@@ -55,13 +55,19 @@ equalDelight.variableArray.version = "0.0.1";
  * - arrayCreate 1
  *   //This is a plugin command where 1 is the ID of a variable.
  *
- * Then you cam modify it with arrayAdd or arratReplace
+ * Then you cam modify it with arrayAdd, arratReplace, etc.
+ *
+ * An array must be defined first to make it work.
  *
  * ============================================================================
  * Parameters
  * ============================================================================
  *
- *
+ * This plugin have 2 parameters and it's pretty self-explanatory.
+ * 
+ * Parameters:
+ * - Forbid Copy
+ *   Forbids an array having items with the same values.
  *
  * ============================================================================
  * Script Calls
