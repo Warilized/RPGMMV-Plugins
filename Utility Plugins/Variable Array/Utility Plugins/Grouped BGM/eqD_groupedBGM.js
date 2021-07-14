@@ -11,7 +11,7 @@ var Imported = Imported || {};
 Imported.eqD_variableArray = "0.0.1";
 
 var eqD = eqD || {};
-equalDelight.groupedBGM = equalDelight.groupedBGM || {};
+eqD.groupedBGM = equalDelight.groupedBGM || {};
 eqD.PluginCommands = eqD.PluginCommands || {};
 
 //=============================================================================
@@ -117,7 +117,6 @@ eqD.PluginCommands = eqD.PluginCommands || {};
       xhr.onerror = ResourceHandler.createLoader(url, loadReference.bind($, src));
       dataMapRef = null;
       xhr.send();
-    };
   };
   
   const eqD_groupedBGM__autoplay = Game_Map.prototype.autoplay;
