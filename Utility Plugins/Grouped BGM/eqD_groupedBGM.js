@@ -16,7 +16,7 @@ eqD.PluginCommands = eqD.PluginCommands || {};
 
 //=============================================================================
  /*:
- * @plugindesc v1.0 Will allow devs to change Map BGM easily.
+ * @plugindesc v0.0.1 | Will allow devs to change Map BGM easily.
  * @author equalDelight
  * 
  * @help
