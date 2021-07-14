@@ -147,17 +147,19 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
   
   varArray.sortValue = function (id) {
     $gameVariables.value(id).sort()
-  }
+  };
   
   varArray.autoSort = function () {
     if (equalDelight.Param.autoSort) {
 			varArray.sortValue(id);
+		} else {
+		  return;
 		}
   };
   
   varArray.forbidCopy = function (id, value) {
     return false;
-  }
+  };
   
   varArray.createNew = function (id) {
     $gameVariables.setValue(id, []);
