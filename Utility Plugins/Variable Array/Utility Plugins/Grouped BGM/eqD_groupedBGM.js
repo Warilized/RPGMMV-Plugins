@@ -127,8 +127,7 @@ eqD.PluginCommands = eqD.PluginCommands || {};
       if ($gamePlayer.isInVehicle()) {
           $gameSystem.saveWalkingBgm2();
       } else {
-		  console.log("Executed autoplay");
-          loadReference(mapRef);
+	      console.log("Executed autoplay");;
       }  
     }
   eqD_groupedBGM__autoplay.call(this);
