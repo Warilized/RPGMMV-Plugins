@@ -11,7 +11,7 @@ var Imported = Imported || {};
 Imported.eqD_variableArray = "0.0.1";
 
 var eqD = eqD || {};
-eqD.groupedBGM = equalDelight.groupedBGM || {};
+eqD.groupedBGM = eqD.groupedBGM || {};
 eqD.PluginCommands = eqD.PluginCommands || {};
 
 //=============================================================================
