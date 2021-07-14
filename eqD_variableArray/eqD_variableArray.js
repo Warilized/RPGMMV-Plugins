@@ -115,17 +115,25 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
   
   let varArray;
   
+  varArray.sortValue = function (id) {
+    $gameVariables.value(id).sort()
+  }
+  
   varArray.autoSort = function () {
     if (equalDelight.Param.autoSort) {
-			$gameVariables.value(id).sort();
+			varArray.sortValue(id);
 		}
   };
   
-  varArray.create = function (id) {
+  varArray.forbidCopy = function (id, value) {
+    return false;
+  }
+  
+  varArray.createNew = function (id) {
     $gameVariables.setValue(id, []);
   };
 
-	varArray.add = function (id, value) {
+	varArray.addElement = function (id, value) {
 	  varValue = $gameVariables.value(id);
 	  action = $gameVariables.setValue(id, tempValue.push(value));
 		if (equalDelight.Param.forbidCopy) {
@@ -141,7 +149,7 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 		varValue = "";
 	};
 	
-	varArray.replace = function (id, a, b) {
+	varArray.replaceElement = function (id, a, b) {
 		varValue = $gameVariables.value(id);
 	  action = $gameVariables.setValue(id, tempValue());
 		if (equalDelight.Param.forbidCopy) {
