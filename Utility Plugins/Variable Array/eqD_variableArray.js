@@ -64,11 +64,6 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  *
  * This plugin have 2 parameters and it's pretty self-explanatory.
  * 
- * Parameters:
- * - Forbid Copy
- *   Forbids an array having items with the same values. 
- *   Usefull for a unique valued array.
- *
  * - Auto Sort
  *   Auto sort the values inside of an array.
  *   If the item value is strictly tied to it's index*, disable this.
