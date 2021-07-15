@@ -54,11 +54,11 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  *  Plugin Commands
  * ==============================================================================
  *
- * "groupedbgm true"
+ * "groupedBGMStart true"
  * 
  * Enables Grouped BGM.
  * 
- * "groupedbgm false"
+ * "groupedbgmStart false"
  * 
  * Disables Grouped BGM. Disable this plugin if there's problem in playing BGM 
  * from an event
@@ -85,12 +85,13 @@ eqD.PluginCommands = eqD.PluginCommands || {};
 //LOCAL VARIABLES
   let groupedBgm,
       currentGroup,
+      BGMGroup,
       BGMGroupName;
 
 //FETCH FUNCTION
   groupedBgm.fetchSrc = function () {
-    var BGMGroup = parseInt($dataMap.meta.bgm_reference),
-        mapRef = 'Map%1.json'.format(BGMGroup.padZero(3));
+    BGMGroup = parseInt($dataMap.meta.bgm_reference),
+    var mapRef = 'Map%1.json'.format(BGMGroup.padZero(3));
     return mapRef;
   };
 
@@ -102,20 +103,20 @@ eqD.PluginCommands = eqD.PluginCommands || {};
     xhr.overrideMimeType('application/json');
     xhr.onload = function() {
       if (xhr.status < 400) {
-        dataMapRef = JSON.parse(xhr.responseText);
-        DataManager.extractMetadata(dataMapRef);
-	      var BGMGroupName = dataMapRef.bgm.name;
+        referencedData = JSON.parse(xhr.responseText);
+        DataManager.extractMetadata(referencedData);
+	      var BGMGroupName = referencedData.bgm.name;
           if (BGMGroup != currentGroup) {
             currentGroup = BGMGroup;
             console.log("This is group : "+currentGroup+", BGM is: "+BGMGroupName );
-            AudioManager.playBgm(dataMapRef.bgm);
+            AudioManager.playBgm(referencedData.bgm);
             var isBGMLoaded = true; 
-            console.log("Executed : "+dataMapRef.bgm.name);
+            console.log("Executed : "+referencedData.bgm.name);
           }
         }
       };
       xhr.onerror = ResourceHandler.createLoader(url, loadReference.bind($, src));
-      dataMapRef = null;
+      referencedData = null;
       xhr.send();
   };
   
