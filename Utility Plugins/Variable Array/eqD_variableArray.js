@@ -103,6 +103,11 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  *     example: arrayRemove 10 5
  *              Removes the item value 5 inside of variable array 10.
  *
+ *   arrayDelete [variable id] [value]
+ *   - This will remove a value in an array.
+ *     example: arrayRemove 10 5
+ *              Removes the item value 5 inside of variable array 10.
+ *
  *   arrayWipe [variable id]
  *   - This will delete every value from an array.
  *     example: arrayWipe 7
@@ -141,15 +146,17 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
 (function ($) {
 	"use strict";
   
-  let varArray;
+  function varArray() {
+    throw new Error("This is a Static Class");
+  };
   
   varArray.throwError = function (ref) {
     switch src {
       case 1:
-        console.log("An array with 2 or more identical value is forbidden!");
+        console.log("varArray: An array with 2 or more identical value is forbidden!");
         break;
       case 2:
-        console.log("Undefined argument value from a function");
+        console.log("varArray argument value from a function");
         break;
       default:
         console.log("Unknown error");
@@ -158,16 +165,28 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
   };
   
   varArray.forbidCopy = function (src, value) {
-		if (eqD.Param.forbidCopy) {
-			if ($gameVariables.value(src).includes(value)) {
-				varArray.throwError(1);
-			} else {
-				return true;
-			}
+		if ($gameVariables.value(src).includes(value)) {
+		  varArray.throwError(1);
+		  return false;
 		} else {
 			return true;
 		}
   };
+
+  varArray.checkType = function (type) {
+    if (type == undefined || type == "def", || type == "default") {
+	    return true;
+	  } else if (type == "uniq" || type == "unique") {
+	    src = id;
+	    item = value;
+	    check = varArray.forbidCopy(src, item);
+	    if (check); {
+	      return true;
+	    } else 
+    } else {
+      varArray.throwError(2);
+    }
+  }
   
   varArray.sortValue = function (id) {
     $gameVariables.value(id).sort()
@@ -176,8 +195,7 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
   varArray.autoSort = function () {
     if (eqD.Param.autoSort) {
 			varArray.sortValue(id);
-		} else {
-		  return;
+			console.log("varArray: Array Sorted")
 		}
   };
   
@@ -187,52 +205,98 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
     $gameVariables.setValue(id, []);
   };
 
-	varArray.addItem = function (id, value, arrayType) {
+	varArray.addItem = function (id, value, type) {
 	  varValue = $gameVariables.value(id);
 	  action = $gameVariables.setValue(id, varValue.push(value));
-	  if (arrayType == undefined) {
+	  if (type == undefined || type == "def", || type == "default") {
+	    action;
+	  } else if (type == "uniq" || type == "unique") {
 	    src = id;
 	    item = value;
-	    varArray.forbidCopy(src, item);
-	  } else {
+	    check = varArray.forbidCopy(src, item);
+	    if (check); {
+	      action;
+	    }
+    } else {
       varArray.throwError(2);
     }
 		varArray.autoSort();
-		varValue = "";
 	};
 
-	varArray.insertItem = function (id, a, b) {
+	varArray.insertItem = function (id, a, b, type) {
 		varValue = $gameVariables.value(id);
 		itemIndex = varValue.indexOf(a);
 	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, 0, b);
-		if (eqD.Param.forbidCopy) {
-			if ($gameVariables.value(id).includes(varValue)) {
-				console.log("An array with 2 or more identical value is forbidden!");
-			} else {
-				action;
-			}
-		} else {
-			action;
-		};
-	  varArray.autoSort();
+		if (type == undefined || type == "def", || type == "default") {
+	    action;
+	  } else if (type == "uniq" || type == "unique") {
+	    src = id;
+	    item = value;
+	    check = varArray.forbidCopy(src, item);
+	    if (check); {
+	      action;
+	    }
+    } else {
+      varArray.throwError(2);
+    }
+	  varArray.autoSort.();
 	}
 	
-	varArray.replaceItem = function (id, a, b) {
+	varArray.replaceItem = function (id, a, b, type) {
 		varValue = $gameVariables.value(id);
 		itemIndex = varValue.indexOf(a);
 	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, 1, b);
-		if (eqD.Param.forbidCopy) {
-			if ($gameVariables.value(id).includes(value)) {
-				console.log("An array with 2 or more identical value is forbidden!");
-			} else {
-				action;
-			}
-		} else {
-			action;
-		};
+    if (type == undefined || type == "def", || type == "default") {
+	    action;
+	  } else if (type == "uniq" || type == "unique") {
+	    src = id;
+	    item = value;
+	    check = varArray.forbidCopy(src, item);
+	    if (check); {
+	      action;
+	    }
+    } else {
+      varArray.throwError(2);
+    }
 	  varArray.autoSort();
-	}
-    
+	};
+	
+	varArray.removeItem = function (id, value) {
+		varValue = $gameVariables.value(id);
+		itemIndex = varValue.indexOf(value);
+	  $gameVariables.setValue(id, varValue.splice(itemIndex, 1);
+	  varArray.autoSort();
+	};
+	
+	varArray.deleteItem = function (id, value) {
+		varValue = $gameVariables.value(id);
+		itemIndex = varValue.indexOf(value);
+	  $gameVariables.setValue(id, delete varValue[itemIndex]);
+	  varArray.autoSort();
+	};
+  
+	varArray.wipeArray = function (id) {
+	  $gameVariables.setValue(id, "");
+	};
+  
+	varArray.deleteArray = function (id) {
+		varValue = $gameVariables.value(id);
+		lenght = varValue.length();
+		for (i = 1, i > lenght, i++) {
+		  itemIndex = i - 1;
+		  $gameVariables.setValue(id, delete varValue[itemIndex]);
+		}
+	};
+	
+	varArray.initArray = function (id) {
+		varValue = $gameVariables.value(id);
+		lenght = varValue.length();
+		for (i = 1, i > lenght, i++) {
+		  itemIndex = i - 1;
+		  $gameVariables.setValue(id, varValue;
+		}
+	};
+  
 })(eqD_variableArray);
 
 // Plugin ends here, hopefully it works as intended.
