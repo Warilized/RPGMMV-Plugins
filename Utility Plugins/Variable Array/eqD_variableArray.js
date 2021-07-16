@@ -2,12 +2,12 @@
 // Variable Array
 // By equalDelight
 // eqD_variableArray.js
-// Version: 0.0.1
+// Version: 0.1
 // Released under MIT license
 //=============================================================================
 
 var Imported = Imported || {};
-Imported.eqD_variableArray = "0.0.1";
+Imported.eqD_variableArray = 0.1;
 
 var eqD = eqD || {};
 eqD.variableArray = eqD.variableArray || {};
@@ -15,7 +15,7 @@ eqD.PluginCommands = eqD.PluginCommands || {};
 
 //=============================================================================
  /*:
- * @plugindesc v0.0.1 | Utility plugin to easily make array in a variable.
+ * @plugindesc v0.1 | Utility plugin to easily make array in a variable.
  * @author equalDelight
  *
  * @param autoSort
@@ -174,6 +174,7 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
   };
 
   varArray.checkType = function (type) {
+    type = type.toLowercase();
     if (type == undefined || type == "def", || type == "default") {
 	    return true;
 	  } else if (type == "uniq" || type == "unique") {
@@ -181,7 +182,7 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
 	    item = value;
 	    check = varArray.forbidCopy(src, item);
 	    if (check); {
-	      return true;
+	      return false;
 	    } else 
     } else {
       varArray.throwError(2);
@@ -195,7 +196,7 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
   varArray.autoSort = function () {
     if (eqD.Param.autoSort) {
 			varArray.sortValue(id);
-			console.log("varArray: Array Sorted")
+			console.log("varArray: Array sorted automatically")
 		}
   };
   
@@ -245,6 +246,7 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
 	varArray.replaceItem = function (id, a, b, type) {
 		varValue = $gameVariables.value(id);
 		itemIndex = varValue.indexOf(a);
+		type = type.toLowercase();
 	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, 1, b);
     if (type == undefined || type == "def", || type == "default") {
 	    action;
