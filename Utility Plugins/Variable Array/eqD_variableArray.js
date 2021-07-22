@@ -2,29 +2,21 @@
 // Variable Array
 // By equalDelight
 // eqD_variableArray.js
-// Version: 0.0.1
+// Version: 0.1
 // Released under MIT license
 //=============================================================================
 
 var Imported = Imported || {};
-Imported.eqD_variableArray = "0.0.1";
+Imported.eqD_variableArray = 0.1;
 
 var eqD = eqD || {};
-equalDelight.variableArray = equalDelight.variableArray || {};
+eqD.variableArray = eqD.variableArray || {};
 eqD.PluginCommands = eqD.PluginCommands || {};
 
 //=============================================================================
  /*:
- * @plugindesc v0.0.1 | Utility plugin to easily make array in a variable.
+ * @plugindesc v0.1 | Utility plugin to easily make array in a variable.
  * @author equalDelight
- *
- * @param forbidCopy
- * @text Forbid Copy
- * @desc Forbids an array having items with the same values.
- * @type boolean
- * @on YES
- * @off NO
- * @default true
  *
  * @param autoSort
  * @text Auto Sort
@@ -62,13 +54,8 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  * Parameters
  * ============================================================================
  *
- * This plugin have 2 parameters and it's pretty self-explanatory.
+ * This plugin have 1 parameter and it's pretty self-explanatory.
  * 
- * Parameters:
- * - Forbid Copy
- *   Forbids an array having items with the same values. 
- *   Usefull for a unique valued array.
- *
  * - Auto Sort
  *   Auto sort the values inside of an array.
  *   If the item value is strictly tied to it's index*, disable this.
@@ -93,12 +80,15 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  *
  * Plugin Commands:
  *
- *   arrayAdd [variable id] [value]
+ *   arrayAdd [variable id] [value] [type of value]
  *   - This will add an array inside a variable.
- *     example: arrayAdd 1 2
- *              Adds the value 2 inside of variable array 1.
+ *     Type of value: def, default, unique. can be xxxx.
+ *     example: arrayAdd 1 2 unique
+ *              Adds the value of 2 inside of variable array 1.
+ *              unique means that the value inside that array
+*               can't be the same.
  *
- *   arrayInsert [variable id] [value] [value index]
+ *   arrayInsert [variable id] [value] [value index] [type of value]
  *   - This will add an array inside a variable.
  *     example: arrayInsert 2 4 8
  *              Insert the item value of 8 at index 8 on variable array 2.
@@ -109,6 +99,11 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  *              Replaces the item value of variable array 2 from 4 to 8.
  *
  *   arrayRemove [variable id] [value]
+ *   - This will remove a value in an array.
+ *     example: arrayRemove 10 5
+ *              Removes the item value 5 inside of variable array 10.
+ *
+ *   arrayDelete [variable id] [value]
  *   - This will remove a value in an array.
  *     example: arrayRemove 10 5
  *              Removes the item value 5 inside of variable array 10.
@@ -139,11 +134,11 @@ eqD.PluginCommands = eqD.PluginCommands || {};
 // Parameter Variables
 //=============================================================================
 
-equalDelight.Parameters = PluginManager.parameters('eqD_variableArray');
-equalDelight.Param = equalDelight.Param || {};
+varArrayParams = PluginManager.parameters('eqD_variableArray');
+eqD.Param = eqD.Param || {};
 
-equalDelight.Param.forbidCopy = eval(String(equalDelight.Parameters['forbidCopy']));
-equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
+eqD.Param.forbidCopy = eval(String(varArrayParams['forbidCopy']));
+eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
 
 //=============================================================================
 // Script
@@ -151,15 +146,17 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
 (function ($) {
 	"use strict";
   
-  let varArray;
+  function varArray() {
+    throw new Error("This is a Static Class");
+  };
   
   varArray.throwError = function (ref) {
     switch src {
       case 1:
-        console.log("An array with 2 or more identical value is forbidden!");
+        console.log("varArray: An array with 2 or more identical value is forbidden!");
         break;
       case 2:
-        console.log("Undefined argument value from a function");
+        console.log("varArray argument value from a function");
         break;
       default:
         console.log("Unknown error");
@@ -168,26 +165,38 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
   };
   
   varArray.forbidCopy = function (src, value) {
-		if (equalDelight.Param.forbidCopy) {
-			if ($gameVariables.value(src).includes(value)) {
-				varArray.throwError(1);
-			} else {
-				return true
-			}
+		if ($gameVariables.value(src).includes(value)) {
+		  varArray.throwError(1);
+		  return false;
 		} else {
 			return true;
 		}
   };
+
+  varArray.checkType = function (type) {
+    type = type.toLowercase();
+    if (type == undefined || type == "def", || type == "default") {
+	    return true;
+	  } else if (type == "uniq" || type == "unique") {
+	    src = id;
+	    item = value;
+	    check = varArray.forbidCopy(src, item);
+	    if (check); {
+	      return false;
+	    } else 
+    } else {
+      varArray.throwError(2);
+    }
+  }
   
   varArray.sortValue = function (id) {
     $gameVariables.value(id).sort()
   };
   
   varArray.autoSort = function () {
-    if (equalDelight.Param.autoSort) {
+    if (eqD.Param.autoSort) {
 			varArray.sortValue(id);
-		} else {
-		  return;
+			console.log("varArray: Array sorted automatically")
 		}
   };
   
@@ -197,52 +206,99 @@ equalDelight.Param.autoSort = eval(String(equalDelight.Parameters['autoSort']));
     $gameVariables.setValue(id, []);
   };
 
-	varArray.addItem = function (id, value) {
+	varArray.addItem = function (id, value, type) {
 	  varValue = $gameVariables.value(id);
 	  action = $gameVariables.setValue(id, varValue.push(value));
-	  src = id;
-	  value = varValue;
-    if (varArray.forbidCopy(src)) {
-      action;
+	  if (type == undefined || type == "def", || type == "default") {
+	    action;
+	  } else if (type == "uniq" || type == "unique") {
+	    src = id;
+	    item = value;
+	    check = varArray.forbidCopy(src, item);
+	    if (check); {
+	      action;
+	    }
     } else {
       varArray.throwError(2);
     }
 		varArray.autoSort();
-		varValue = "";
 	};
 
-	varArray.insertItem = function (id, a, b) {
+	varArray.insertItem = function (id, a, b, type) {
 		varValue = $gameVariables.value(id);
 		itemIndex = varValue.indexOf(a);
 	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, 0, b);
-		if (equalDelight.Param.forbidCopy) {
-			if ($gameVariables.value(id).includes(varValue)) {
-				console.log("An array with 2 or more identical value is forbidden!");
-			} else {
-				action;
-			}
-		} else {
-			action;
-		};
-	  varArray.autoSort();
+		if (type == undefined || type == "def", || type == "default") {
+	    action;
+	  } else if (type == "uniq" || type == "unique") {
+	    src = id;
+	    item = value;
+	    check = varArray.forbidCopy(src, item);
+	    if (check); {
+	      action;
+	    }
+    } else {
+      varArray.throwError(2);
+    }
+	  varArray.autoSort.();
 	}
 	
-	varArray.replaceItem = function (id, a, b) {
+	varArray.replaceItem = function (id, a, b, type) {
 		varValue = $gameVariables.value(id);
 		itemIndex = varValue.indexOf(a);
+		type = type.toLowercase();
 	  action = $gameVariables.setValue(id, varValue.splice(itemIndex, 1, b);
-		if (equalDelight.Param.forbidCopy) {
-			if ($gameVariables.value(id).includes(value)) {
-				console.log("An array with 2 or more identical value is forbidden!");
-			} else {
-				action;
-			}
-		} else {
-			action;
-		};
+    if (type == undefined || type == "def", || type == "default") {
+	    action;
+	  } else if (type == "uniq" || type == "unique") {
+	    src = id;
+	    item = value;
+	    check = varArray.forbidCopy(src, item);
+	    if (check); {
+	      action;
+	    }
+    } else {
+      varArray.throwError(2);
+    }
 	  varArray.autoSort();
-	}
-    
+	};
+	
+	varArray.removeItem = function (id, value) {
+		varValue = $gameVariables.value(id);
+		itemIndex = varValue.indexOf(value);
+	  $gameVariables.setValue(id, varValue.splice(itemIndex, 1);
+	  varArray.autoSort();
+	};
+	
+	varArray.deleteItem = function (id, value) {
+		varValue = $gameVariables.value(id);
+		itemIndex = varValue.indexOf(value);
+	  $gameVariables.setValue(id, delete varValue[itemIndex]);
+	  varArray.autoSort();
+	};
+  
+	varArray.wipeArray = function (id) {
+	  $gameVariables.setValue(id, "");
+	};
+  
+	varArray.deleteArray = function (id) {
+		varValue = $gameVariables.value(id);
+		lenght = varValue.length();
+		for (i = 1, i > lenght, i++) {
+		  itemIndex = i - 1;
+		  $gameVariables.setValue(id, delete varValue[itemIndex]);
+		}
+	};
+	
+	varArray.initArray = function (id) {
+		varValue = $gameVariables.value(id);
+		lenght = varValue.length();
+		for (i = 1, i > lenght, i++) {
+		  itemIndex = i - 1;
+		  $gameVariables.setValue(id, varValue;
+		}
+	};
+  
 })(eqD_variableArray);
 
 // Plugin ends here, hopefully it works as intended.
