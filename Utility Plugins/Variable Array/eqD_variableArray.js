@@ -137,7 +137,6 @@ eqD.PluginCommands = eqD.PluginCommands || {};
 varArrayParams = PluginManager.parameters('eqD_variableArray');
 eqD.Param = eqD.Param || {};
 
-eqD.Param.forbidCopy = eval(String(varArrayParams['forbidCopy']));
 eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
 
 //=============================================================================
@@ -145,6 +144,18 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
 //=============================================================================
 (function ($) {
 	"use strict";
+	
+	function gv() {
+	  throw new Error("This is a Static Class");
+	};
+	
+	gv.v = function (id) {
+	  return $gameVariables.value(id);
+	};
+	
+	gv.sv = function (id, value) {
+	  return $gameVariables.setValue(id, value);
+	};
   
   function varArray() {
     throw new Error("This is a Static Class");
