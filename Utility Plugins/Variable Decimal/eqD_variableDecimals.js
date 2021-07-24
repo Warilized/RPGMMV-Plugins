@@ -6,8 +6,8 @@
 // Released under MIT license
 //=============================================================================
 
-var eqD = eqD || {};                           //Author namespace
-eqD.varDecimals = eqD.varDecimals || {};       //Plugin namespace
+var eqD = eqD || {};                           		//Author namespace
+eqD.variableDecimals = eqD.variableDecimals || {};      //Plugin namespace
 //eqD.PluginCommands = eqD.PluginCommands || {};
 
 var Imported = Imported || {};                 //Import declaration namespace
@@ -87,4 +87,4 @@ Imported.eqD_varDecimals = 1.0;                //Version declaration namespace
       this.onChange();
     }
   };
-})(eqD.varDecimals);    // Pass plugin namespace in as parameter 1 of the IIFE
+})(eqD.variableDecimals);    // Pass plugin namespace in as parameter 1 of the IIFE
