@@ -11,7 +11,7 @@ eqD.variableDecimals = eqD.variableDecimals || {};      //Plugin namespace
 //eqD.PluginCommands = eqD.PluginCommands || {};
 
 var Imported = Imported || {};                 //Import declaration namespace
-Imported.eqD_varDecimals = 1.0;                //Version declaration namespace
+Imported.eqD_variableDecimals = 1.0;           //Version declaration namespace
 
 /*:
  * @plugindesc Enable Decimal on variable.
@@ -63,7 +63,7 @@ Imported.eqD_varDecimals = 1.0;                //Version declaration namespace
 //=============================================================================
 	
   // Get this plugin's parameters (note: params are all in string format here)
-  const params = PluginManager.parameters('eqD_varDecimals');
+  const params = PluginManager.parameters('eqD_variableDecimals');
   // Define a new property on the plugin namespace	
   $.decNum = parseInt(params["Decimal"], 10) || 0; 	// string -> base-10 integer
   $.rounding = = String(params['Rounding']).trim().toLowerCase();
