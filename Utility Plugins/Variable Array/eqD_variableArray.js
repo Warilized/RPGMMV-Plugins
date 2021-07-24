@@ -126,7 +126,7 @@ eqD.PluginCommands = eqD.PluginCommands || {};
  * Credits are apreciated.
  *
  * Release Notes:
- * https://github.com/Warilized/RPGMMV-Plugins/blob/main/Utility%20Plugins/Variable%20Array/RELEASENOTES.txt 
+ * https://github.com/Warilized/RPGMMV-Plugins/blob/main/Utility%20Plugins/Variable%20Array/README.md 
  */
 //=============================================================================
 
