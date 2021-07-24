@@ -6,12 +6,12 @@
 // Released under MIT license
 //=============================================================================
 
-var Imported = Imported || {};
-Imported.eqD_variableArray = 0.1;
-
 var eqD = eqD || {};
 eqD.variableArray = eqD.variableArray || {};
 eqD.PluginCommands = eqD.PluginCommands || {};
+
+var Imported = Imported || {};
+Imported.eqD_variableArray = 0.1;
 
 //=============================================================================
  /*:
@@ -134,11 +134,9 @@ eqD.PluginCommands = eqD.PluginCommands || {};
 // Parameter Variables
 //=============================================================================
 
-varArrayParams = PluginManager.parameters('eqD_variableArray');
-eqD.Param = eqD.Param || {};
+const Params = PluginManager.parameters('eqD_variableArray');
 
-eqD.Param.forbidCopy = eval(String(varArrayParams['forbidCopy']));
-eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
+$.autoSort = eval(String(varArrayParams['autoSort']));
 
 //=============================================================================
 // Script
@@ -194,7 +192,7 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
   };
   
   varArray.autoSort = function () {
-    if (eqD.Param.autoSort) {
+    if ($.autoSort) {
 			varArray.sortValue(id);
 			console.log("varArray: Array sorted automatically")
 		}
@@ -299,6 +297,6 @@ eqD.Param.autoSort = eval(String(varArrayParams['autoSort']));
 		}
 	};
   
-})(eqD_variableArray);
+})(eqD.variableArray);
 
 // Plugin ends here, hopefully it works as intended.
